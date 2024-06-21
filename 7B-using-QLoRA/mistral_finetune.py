@@ -55,12 +55,36 @@ A few minutes after your model has started Running, click the 'Notebook' button 
 Note: You can connect your cloud credits (AWS or GCP) by clicking "Org: " on the top right, and in the panel that slides over, click "Connect AWS" or "Connect GCP" under "Connect your cloud" and follow the instructions linked to attach your credentials.
 """
 
-# You only need to run this once per machine
-pip install -q -U bitsandbytes
-pip install -q -U git+https://github.com/huggingface/transformers.git
-pip install -q -U git+https://github.com/huggingface/peft.git
-pip install -q -U git+https://github.com/huggingface/accelerate.git
-pip install -q -U datasets scipy ipywidgets
+import subprocess
+
+# List of packages to install
+packages = [
+    "bitsandbytes",
+    "git+https://github.com/huggingface/transformers.git",
+    "git+https://github.com/huggingface/peft.git",
+    "git+https://github.com/huggingface/accelerate.git",
+    "datasets",
+    "scipy",
+    "ipywidgets",
+]
+
+def install_packages(packages):
+  """Installs all packages in the provided list using pip.
+
+  Args:
+      packages (list): A list of package names or URLs.
+  """
+  for package in packages:
+    try:
+      subprocess.run(["pip", "install", "-q", "-U", package], check=True)
+      print(f"Successfully installed {package}")
+    except subprocess.CalledProcessError as e:
+      print(f"Error installing {package}: {e}")
+
+if __name__ == "__main__":
+  install_packages(packages)
+  print("Installation complete!")
+
 
 """### 1. Load Dataset
 
