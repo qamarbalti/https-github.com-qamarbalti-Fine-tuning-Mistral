@@ -281,7 +281,19 @@ print(model)
 """
 Let's use Weights & Biases to track our training metrics. You'll need to apply an API key when prompted. Feel free to skip this if you'd like, and just comment out the `wandb` parameters in the `Trainer` definition below."""
 
-!pip install -q wandb -U
+import subprocess
+
+# Package to install
+package = "wandb"
+
+try:
+  subprocess.run(["pip", "install", "-q", "-U", package], check=True)
+  print(f"Successfully installed {package}")
+except subprocess.CalledProcessError as e:
+  print(f"Error installing {package}: {e}")
+
+print("Installation complete!")
+
 
 import wandb, os
 wandb.login()
