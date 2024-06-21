@@ -56,11 +56,11 @@ Note: You can connect your cloud credits (AWS or GCP) by clicking "Org: " on the
 """
 
 # You only need to run this once per machine
-!pip install -q -U bitsandbytes
-!pip install -q -U git+https://github.com/huggingface/transformers.git
-!pip install -q -U git+https://github.com/huggingface/peft.git
-!pip install -q -U git+https://github.com/huggingface/accelerate.git
-!pip install -q -U datasets scipy ipywidgets
+pip install -q -U bitsandbytes
+pip install -q -U git+https://github.com/huggingface/transformers.git
+pip install -q -U git+https://github.com/huggingface/peft.git
+pip install -q -U git+https://github.com/huggingface/accelerate.git
+pip install -q -U datasets scipy ipywidgets
 
 """### 1. Load Dataset
 
